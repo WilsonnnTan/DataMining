@@ -22,7 +22,7 @@ def get_mode_per_column(cluster):
         modes.append(mode_val)
     return modes
 
-def kmodes(rows, k=3, max_iter=10000):
+def kmodes(rows, k=2, max_iter=10000):
     """K-Modes untuk data kategorikal."""
     random.seed(2)
     centroids = random.sample(rows, k)
