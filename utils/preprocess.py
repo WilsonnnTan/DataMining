@@ -64,6 +64,20 @@ def check_missing_value(rows):
     print(f"Total sel dengan missing value: {total_miss}")
 
 
+def remove_missing_rows(rows):
+    """
+    Menghapus baris yang memiliki missing value ("").
+    Mengembalikan dataset baru tanpa missing value.
+    """
+    cleaned_rows = []
+
+    for row in rows:
+        if "" not in row:
+            cleaned_rows.append(row)
+            
+    return cleaned_rows
+
+
 def check_duplicates(rows):
     """
     Melakukan pengecekan duplikasi data.
@@ -86,6 +100,22 @@ def check_duplicates(rows):
     else:
         print("\nTidak ada duplikasi data ditemukan.")
         
+
+def remove_duplicates(rows):
+    """
+    Menghapus baris duplikat dari dataset.
+    """
+    unique_rows = []
+    seen = set()
+
+    for row in rows:
+        row_tuple = tuple(row)
+        if row_tuple not in seen:
+            seen.add(row_tuple)
+            unique_rows.append(row)
+
+    return unique_rows
+
 
 def encode_kategori(header, rows):
     """
@@ -115,11 +145,11 @@ def encode_kategori(header, rows):
             for row in rows:
                 row[target_index] = kategori_mapping[row[target_index].strip()]
                 
-            print("\n=== Mapping kategori otomatis ===")
-            for key, val in kategori_mapping.items():
-                print(f"{val}: {key}")
-        else:
-            print(f"Kolom '{target}' tidak ditemukan di header!")
+        #     print("\n=== Mapping kategori otomatis ===")
+        #     for key, val in kategori_mapping.items():
+        #         print(f"{val}: {key}")
+        # else:
+        #     print(f"Kolom '{target}' tidak ditemukan di header!")
     
     return header, rows
 
@@ -134,12 +164,12 @@ def data_reduction(header_names, header, rows):
             for row in rows:
                 row.pop(idx)
             header.pop(idx)
-            print(f"Kolom '{header_name}' dihapus.")
-        else:
-            print(f"Kolom '{header_name}' tidak ditemukan di header!")
+        #     print(f"Kolom '{header_name}' dihapus.")
+        # else:
+        #     print(f"Kolom '{header_name}' tidak ditemukan di header!")
             
 
-def find_non_informative_columns(clusters, centroids, header):
+def find_non_informative_columns(centroids, header):
     """
     Kolom yang mode-nya sama di semua cluster → kurang membedakan
     """
@@ -149,17 +179,3 @@ def find_non_informative_columns(clusters, centroids, header):
         if len(set(values)) == 1:
             non_informative.append(header[col_idx])
     return non_informative
-
-
-def print_column_distribution_kmodes(clusters, header):
-    """
-    Print distribusi nilai tiap kolom per cluster
-    clusters: list of list of rows
-    """
-    num_cols = len(header)
-    for col_idx in range(num_cols):
-        print(f"\nKolom: {header[col_idx]}")
-        for cluster_idx, cluster in enumerate(clusters):
-            values = [row[col_idx] for row in cluster]
-            counts = Counter(values)
-            print(f" Cluster {cluster_idx}: {dict(counts)}")
