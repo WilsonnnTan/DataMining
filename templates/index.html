@@ -6,9 +6,21 @@
 <div class="form-card">
     <h2>Upload CSV</h2>
     <form method="POST" enctype="multipart/form-data" action="/cluster">
-        <input type="file" name="csv_file" accept=".csv" required>
+        <div class="file-input-wrapper">
+            <label for="csv_file" class="file-input-label">Choose CSV File</label>
+            <input type="file" id="csv_file" name="csv_file" accept=".csv">
+            <div id="file-name" class="file-name">No file selected</div>
+        </div>
         <button type="submit">Upload</button>
     </form>
+    <br>
+
+    <script>
+        document.getElementById('csv_file').addEventListener('change', function() {
+            const fileName = this.files.length > 0 ? this.files[0].name : "No file selected";
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
 
     {% if csv_info %}
         {% if csv_info.error %}
