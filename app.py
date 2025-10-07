@@ -1,39 +1,6 @@
-# from utils.preprocess import load_csv, encode_kategori
-# from utils.kmodes import kmodes, kmodes_cost
-# from utils.column_analysis import find_non_informative_columns, print_column_distribution_kmodes
-
-# # === Load & preprocess data ===
-# header, rows = load_csv("dataset.csv")
-# header, rows = encode_kategori(header, rows)
-
-# # Pastikan semua data int
-# X = [list(map(int, row)) for row in rows]
-
-# # =========================
-# # K-Modes
-# # =========================
-# k = 2
-# clusters_kmodes, centroids_kmodes = kmodes(X, k=k)
-# cost_kmodes = kmodes_cost(clusters_kmodes, centroids_kmodes)
-
-# print("\n=== K-Modes Results ===")
-# for idx, cluster in enumerate(clusters_kmodes):
-#     print(f"Cluster {idx} ({len(cluster)} data)")
-
-# print(f"Total dissimilarity (cost): {cost_kmodes}")
-
-# # =========================
-# # Analisis kolom
-# # =========================
-# non_info_cols = find_non_informative_columns(clusters_kmodes, centroids_kmodes, header)
-# print("\nKolom yang kurang membedakan cluster (bisa dibuang):")
-# print(non_info_cols)
-
-# print("\nDistribusi nilai tiap kolom per cluster:")
-# print_column_distribution_kmodes(clusters_kmodes, header)
-
-from flask import Flask, render_template, request
 import csv
+from utils.visualize import cluster_data
+from flask import Flask, render_template, request
 from io import StringIO
 
 app = Flask(__name__)
@@ -74,7 +41,8 @@ def cluster():
                     }
                     return render_template("index.html", csv_info=csv_info)
                 else:
-                    # TODO: manggil fungsi cluster dan visualisasi
+                    # Proses clustering
+                    csv_info = cluster_data(file_path=file)
                     return render_template("cluster.html", csv_info=csv_info)
         else:
             csv_info = {"error": "File bukan CSV!"}
