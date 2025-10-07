@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}Upload CSV{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Upload CSV</h2>
+    <form method="POST" enctype="multipart/form-data" action="/cluster">
+        <input type="file" name="csv_file" accept=".csv" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if csv_info %}
+        {% if csv_info.error %}
+            <p style="color:red;">{{ csv_info.error }}</p>
+        {% else %}
+            <h3>File: {{ csv_info.filename }}</h3>
+            <p>Jumlah kolom: {{ csv_info.col_count }}</p>
+            <p>Jumlah baris: {{ csv_info.row_count }}</p>
+            <h4>Preview 5 baris pertama:</h4>
+            <table border="1">
+                <tr>
+                    {% for col in csv_info.preview[0] %}
+                        <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in csv_info.preview %}
+                    <tr>
+                        {% for val in row %}
+                            <td>{{ val }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
