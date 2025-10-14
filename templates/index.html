@@ -5,6 +5,13 @@
 {% block content %}
 <div class="form-card">
     <h2>Upload CSV</h2>
+
+    <div class="download-container">
+        <form method="GET" enctype="multipart/form-data" action="/download_question">
+            <button type="submit">Download Question</button>
+        </form>
+    </div>
+    <br><br>
     <form method="POST" enctype="multipart/form-data" action="/cluster">
         <div class="file-input-wrapper">
             <label for="csv_file" class="file-input-label">Choose CSV File</label>
