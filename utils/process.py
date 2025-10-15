@@ -6,7 +6,15 @@ import numpy as np
 def load_csv(file_path):
     # --- 1.1 Memuat dan Membersihkan Data ---
     df = pd.read_csv(file_path)
-    columns_to_drop = ['Timestamp', 'Jenis Kelamin', 'Angkatan (Tahun Masuk)', 'Semester saat ini', 'IPK terakhir', 'Status aktivitas akademik', 'Platform media sosial yang sering dipakai']
+    columns_to_drop = [
+        'timestamp',
+        'jenis kelamin',
+        'angkatan (tahun masuk)',
+        'semester saat ini',
+        'ipk terakhir',
+        'status aktivitas akademik',
+        'platform media sosial yang sering dipakai'
+    ]
     df_cleaned = df.drop(columns=columns_to_drop)
 
     # --- 1.2 Encoding (One-Hot) ---
