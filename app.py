@@ -1,6 +1,6 @@
 import csv
-from utils.visualize import cluster_data
-from flask import Flask, render_template, request
+from utils.visualize import run_process
+from flask import Flask, render_template, request, send_file
 from io import StringIO
 
 app = Flask(__name__)
@@ -47,8 +47,18 @@ def cluster():
         writer.writerow(header)
         writer.writerows(rows)
 
-    csv_info = cluster_data("dataset.csv")
+    csv_info = run_process("dataset.csv")
     return render_template("cluster.html", csv_info=csv_info)
+
+
+@app.route("/download_question", methods=["GET"])
+def download_question():
+    return send_file(
+        "list_pertanyaan.txt",
+        as_attachment=True,
+        download_name="list_pertanyaan.txt",
+        mimetype="text/csv"
+    )
 
 
 if __name__ == "__main__":

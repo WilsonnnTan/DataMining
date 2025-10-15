@@ -1,3 +1,36 @@
 {% extends "layout.html" %}
+{% block title %}Clustering Result{% endblock %}
 
-{% block title %}Clustering{% endblock %}
+{% block content %}
+<div class="form-card">
+    <h2>Hasil Clustering</h2>
+
+    {% if csv_info.error %}
+        <p style="color:red;">{{ csv_info.error }}</p>
+    {% else %}
+        <div class="scores" style="margin-bottom: 30px; text-align: center;">
+            <p><strong>Silhouette Score (K-Means):</strong> {{ csv_info.kmeans_score }}</p>
+            <p><strong>Silhouette Score (AHC):</strong> {{ csv_info.ahc_score }}</p>
+            <p><strong>Silhouette Score (DBSCAN):</strong> {{ csv_info.dbscan_score }}</p>
+        </div>
+
+        <div class="plot-grid" style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+            {% for plot in csv_info.plots %}
+                <div class="plot-item" style="text-align: center;">
+                    <img src="data:image/png;base64,{{ plot.image }}" 
+                         alt="{{ plot.title }}" 
+                         style="width: 400px; height: auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15);" />
+                    <p style="margin-top: 10px; font-weight: 600;">{{ plot.title }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <br>
+        <div style="text-align: center;">
+            <a href="/" style="text-decoration: none;">
+                <button type="button">Kembali</button>
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

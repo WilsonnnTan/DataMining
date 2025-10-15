@@ -1,0 +1,64 @@
+⚠️ Peringatan / Catatan Penting ⚠️
+
+Daftar di bawah ini berisi pertanyaan survei beserta opsi jawaban yang mungkin (bukan hasil respon asli).
+File ini dibuat untuk membantu pengguna memahami format dan pilihan input yang valid saat mengisi survei.
+Pastikan Anda tidak mengubah urutan atau format opsi jawaban agar hasil analisis tetap konsisten.
+
+Contoh Format:
+Pertanyaan → Opsi Jawaban yang Mungkin
+
+Jenis Kelamin → Laki-Laki, Perempuan
+
+Angkatan (Tahun Masuk) → 2024, 2023, 2022
+
+Semester saat ini → 1, 2, 3, 5, 6, 7, 8
+
+IPK terakhir → < 2.0, 2.0 - 2.5, 2.5 - 3.0, 3.0 - 3.5, > 3.5
+
+Status aktivitas akademik → Aktif kuliah penuh waktu, Aktif + kerja paruh Waktu, Cuti
+
+Platform media sosial yang sering dipakai → Instagram, Discord, Youtube, X, TikTok, Reddit, LinkedIn, Facebook, Telegram, Whatsapp, Pinterest (Pilihan Lebih Dari Satu)
+
+Rata-rata waktu penggunaan media sosial per hari → > < 1 jam ,1 - 2 jam, 2 - 4 jam, 4 - 6 jam, > 6 jam
+
+Proporsi konten edukasi dari total waktu sosmed (persepsi) → > 0 - 10%, 11 - 30%, 31 - 50%, 51 - 70%, > 70%
+
+Seberapa sering kamu menggunakan media sosial khusus untuk belajar TI? (mencari tutorial, debugging video, repo, dsb.) → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Seberapa sering kamu terdistraksi (scrolling tidak relevan) selama waktu belajar? → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Saya menonton tutorial video (YouTube/TikTok) untuk menyelesaikan tugas pemrograman → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Saya mengikuti Channel/Creator TI (YouTube, Tiktok, Instagram, Discord) untuk materi/topik kursus → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Saya memakai media sosial untuk mencari solusi debugging → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Saya menonton konten singkat (reels/TikTok) untuk motivasi belajar atau quick tips → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Saya bergabung dengan komunitas TI (Discord/Telegram/Reddit) → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Media sosial mempermudah pemahaman konsep mata kuliah TI → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Media sosial mempercepat penyelesaian tugas karena ada tutorial/solusi yang relevan → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Media sosial membantu saya menemukan sumber referensi / repo yang berguna untuk tugas proyek → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Penggunaan media sosial membuat nilai/performaku membaik secara nyata → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Media sosial lebih sering menjadi sumber distraksi daripada sumber pembelajaran → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Ketika tugas sulit, langkah pertama saya -> "Cari tutorial/Youtube", "Tanya teman/Discord", "Baca dokumentasi resmi", "Coba sendiri dulu", "Tanya AI" (Pilih salah Satu)
+
+Seberapa sering kamu mengunggah/berbagi konten pembelajaran yang kamu temukan ke teman (share)? → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Penggunaan media sosial untuk belajar membuat saya belajar lebih lama dari yang direncanakan (time sink) → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Penggunaan media sosial berkontribusi pada kurangnya waktu tidur saat mengejar deadline → 1, 2, 3, 4, 5 (Tidak Pernah hingga Sangat Sering)
+
+Saya setuju jika dosen memasukkan konten YouTube/TikTok edukasi resmi sebagai referensi wajib → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Saya nyaman jika kampus menyediakan playlist resmi dari channel edukasi TI → 1, 2, 3, 4, 5 (Sangat Tidak Setuju hingga Sangat Setuju)
+
+Saya bersedia menggunakan platform campus-official yang mengkurasi konten sosial -> Ya, Tidak
+
+Menurutmu, seberapa besar pengaruh medsos terhadap prestasi akademikmu? → 1, 2, 3, 4, 5 (Sangat negatif hingga Sangat positif)
