@@ -1,4 +1,5 @@
 import csv
+
 from utils.visualize import run_process
 from flask import Flask, render_template, request, send_file
 from io import StringIO
@@ -8,7 +9,7 @@ app = Flask(__name__)
 # Baca rules CSV (header yang valid)
 with open("csv_rules.csv", "r", encoding="utf-8") as f:
     reader = csv.reader(f)
-    valid_header = [h.strip() for h in next(reader)]  # Ambil header
+    valid_header = [h.strip().lower() for h in next(reader)]  # Ambil header
 
 
 @app.route("/", methods=["GET"])
@@ -33,7 +34,7 @@ def cluster():
         csv_info = {"error": "CSV kosong!"}
         return render_template("index.html", csv_info=csv_info)
 
-    header = [h.strip() for h in data[0]]
+    header = [h.strip().lower() for h in data[0]]
     rows = data[1:]
 
     # Validasi header dengan csv_rules.csv
