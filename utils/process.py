@@ -20,24 +20,6 @@ def load_csv(file_path):
     data_initial = df_numeric.to_numpy()
     
     return data_initial
-
-
-# def print_data(header, rows):
-#     """
-#     Mencetak informasi dataset.
-#     """
-#     print(f"Total feature: {len(header)}")
-#     print(f"Total row: {len(rows)}\n")
-
-#     for i in range(len(header)):
-#         print(f"{i}: {header[i]}")
-
-#     for i in range(len(header)):
-#         print(f"{i},", end="")
-#     print()
-        
-#     for i in range(len(rows)):
-#         print(rows[i])
        
         
 def check_missing_value(rows):
@@ -106,12 +88,32 @@ def remove_duplicates(rows):
 
 
 def standard_scaler_from_scratch(X):
-    """Standarisasi data (mean=0, std=1) per kolom."""
+    """Standarisasi data (mean=0, std=1) per kolom, aman dari NaN/inf."""
+    # Pastikan X berupa array float
+    X = np.array(X, dtype=np.float64)
+
+    # Ganti inf atau -inf jadi NaN
+    X = np.where(np.isinf(X), np.nan, X)
+
+    # Isi NaN dengan mean kolom
+    col_means = np.nanmean(X, axis=0)
+    inds = np.where(np.isnan(X))
+    X[inds] = np.take(col_means, inds[1])
+
+    # Hitung mean & std baru
     mean = np.mean(X, axis=0)
     std = np.std(X, axis=0)
-    # Tambahkan nilai kecil (epsilon) untuk menghindari pembagian dengan nol
-    epsilon = 1e-8
-    return (X - mean) / (std + epsilon)
+
+    # Hindari pembagian nol
+    std[std == 0] = 1e-8
+
+    # Standarisasi data
+    X_scaled = (X - mean) / (std + 1e-8)
+
+    # Pastikan hasil akhir bebas NaN/inf
+    X_scaled = np.nan_to_num(X_scaled, nan=0.0, posinf=0.0, neginf=0.0)
+
+    return X_scaled
 
 
 def pca_from_scratch(X, n_components):
